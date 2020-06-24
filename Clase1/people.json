@@ -1,0 +1,18 @@
+{
+  "people": [
+    {
+      "id": 1,
+      "name": "Martha",
+      "document_id": "209580635",
+      "email": "martha@gmail.com",
+      "altura": "170cm"
+    },
+    {
+      "id": 2,
+      "name": "Camila",
+      "document_id": "208640213",
+      "email": "cami@gmail.com",
+      "altura": "156cm"
+    }
+  ]
+}
