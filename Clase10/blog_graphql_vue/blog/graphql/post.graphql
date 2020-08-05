@@ -1,0 +1,28 @@
+extend type Query {
+    posts: [Post!]! @paginate(defaultCount: 12)
+    post(id: ID @eq): Post @find
+}
+
+extend type Mutation {
+    createPost(input: PostInput! @spread): Post! @create
+    updatePost(id: ID!, input: PostInput! @spread): Post! @update
+    deletePost(id: ID!): Post! @delete
+}
+
+input PostInput {
+  title: String! @rules(apply: ["required"])
+  body: String! @rules(apply: ["required"])
+  author_id: Int! @rules(apply: ["required"])
+  date: Date! @rules(apply: ["required"])
+}
+
+type Post {
+    id: ID!
+    title: String!
+    body: String!
+    date: DateTime!
+    author_id: Int!
+    author: Author @hasOne
+    created_at: DateTime!
+    updated_at: DateTime!
+}

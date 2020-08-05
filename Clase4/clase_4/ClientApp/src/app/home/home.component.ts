@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   event_1() {
-    alert("it works");
   }
 }

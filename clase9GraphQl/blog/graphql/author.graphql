@@ -1,0 +1,28 @@
+extend type Query {
+    authors: [Author!]! @paginate(defaultCount: 12)
+    author(id: ID @eq): Author @find
+}
+
+extend type Mutation {
+    createAuthor(input: AuthorInput! @spread): Author! @create
+    updateAuthor(id: ID!, input: AuthorInput! @spread): Author! @update
+    deleteAuthor(id: ID!): Author! @delete
+}
+
+type Author {
+    id: ID!
+    name: String!
+    birth_date: DateTime!
+    genre: String!
+    nationality: String!
+    posts: [Post!]! @hasMany
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+input AuthorInput {
+    name: String! @rules(apply: ["required"])
+    birth_date: Date! @rules(apply: ["required"])
+    genre: String! @rules(apply: ["required"])
+    nationality: String! @rules(apply: ["required"])
+}
