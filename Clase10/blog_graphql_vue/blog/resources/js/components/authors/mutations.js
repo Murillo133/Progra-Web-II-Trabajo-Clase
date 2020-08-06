@@ -1,5 +1,6 @@
 import gpl from "graphql-tag";
 
+
 export const CREATE_AUTHOR = gpl`
 mutation($author: AuthorInput!) {
     createAuthor(input: $author){
@@ -20,15 +21,10 @@ mutation($id: ID!) {
 }
 `;
 
-
 export const UPDATE_AUTHOR = gpl`
-mutation($author: AuthorInput!) {
+mutation($author: UpdateAuthorInput!) {
     updateAuthor(input: $author){
         id
-        name
-        birth_date
-        genre
-        nationality
     }
 }
 `;

@@ -5,7 +5,7 @@ extend type Query {
 
 extend type Mutation {
     createAuthor(input: AuthorInput! @spread): Author! @create
-    updateAuthor(id: ID!, input: AuthorInput! @spread): Author! @update
+    updateAuthor(input: UpdateAuthorInput! @spread): Author! @update
     deleteAuthor(id: ID!): Author! @delete
 }
 
@@ -21,6 +21,14 @@ type Author {
 }
 
 input AuthorInput {
+  name: String! @rules(apply: ["required"])
+  birth_date: Date! @rules(apply: ["required"])
+  genre: String! @rules(apply: ["required"])
+  nationality: String! @rules(apply: ["required"])
+}
+
+input UpdateAuthorInput{
+  id: ID!
   name: String! @rules(apply: ["required"])
   birth_date: Date! @rules(apply: ["required"])
   genre: String! @rules(apply: ["required"])
